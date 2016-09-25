@@ -14,8 +14,11 @@ public class Product {
 	@Id
 	private String id;
 	private String name;
-	private String description;
+	private String categoryid;
+	private String supplierid;
 	private double price;
+	private int stock;
+
 	public String getId() {
 		return id;
 	}
@@ -28,17 +31,33 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+	
+	public String getCategoryid() {
+		return categoryid;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCategory_id(String categoryid) {
+		this.categoryid = categoryid;
 	}
-	public double getPrice() {
+	
+	public String getSupplierid() {
+		return supplierid;
+	}
+	public void setSupplier_id(String supplierid) {
+		this.supplierid = supplierid;
+	}
+	
+		public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 	
