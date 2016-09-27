@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-        <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -13,32 +11,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<style>
- 
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width:100%;
-	  height:400px;
-      margin: auto;
-  }
-  
-footer {
-    
-    margin-top: 50px;
-    
-} 
-body {
-width:100%;
-}
-  
-
-  </style>
-
 </head>
-<body  style="background-color:#CCCCCC;">
+<body>
 
-
- <div class="text-center" >
+<div class="text-center" >
   <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
     <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
   <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
@@ -54,16 +30,7 @@ width:100%;
      <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
     </div>
   
-   <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div>
+   
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
       	   <li class="active"><a href="HOME.jsp">HOME</a></li>
     	   <li><a href="#">PRODUCTS</a></li>
@@ -72,75 +39,102 @@ width:100%;
       </ul>
    </div>
   </nav>
-  
-<div class="container">
+ 
+  <c:url var="addAction" value="addItem" ></c:url>
+
+<form:form action="${addAction}" modelAttribute="category" id="btn-add">
+   <h3>
+                    <c:if test="$(category.id==0}">
+		       Add New Item
+	            </c:if>
+	            <c:if test="${!empty category.id}">
+		     
+		     <%--  <form:hidden path="id"/> --%>
+	            </c:if>
+         </h3>
+          <div class="container">
  <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
   <ul class="nav nav-tabs col-lg-12">
     <li><a href="Product.jsp">Product</a></li>
-    <li><a href="Supplier.jsp">Supplier</a></li>
-    <li class="active"><a href="Category.jsp">Category</a></li>
+    <li class="active"><a href="Supplier.jsp">Supplier</a></li>
+    <li><a href="Category.jsp">Category</a></li>
   </ul>
   </div>
   <br>
 <div class="clearfix"></div>
 	<div class="Product_Content tab-content">
-           
-  <br>	
-<div id="Category" class="tab-pane active">
-            <form class="form-horizontal" action='' method="POST">
+            <div id="Category" class="tab-pane active">
+            <form class="form-horizontal">
  
   <br>
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+ <c:if test="${category.id!=0}">
       <label class="col-md-4 form-group"  for="id">Id</label>
       <div class="col-md-6">
-        <form:input type="text" id="id" name="id" placeholder="category id" class="form-control name" path="id"/>
+        <form:input type="text" id="id" name="id" placeholder="product id" class="form-control name" path="id"/>
       </div>
-    </div>
-	
-
-<div class="col-xs-8 col-sm-8  col-md-6 col-sm-offset-2 col-md-offset-3">
+     </c:if>
+         </div>
+    
+    <div class="col-xs-8 col-sm-8  col-md-6 col-sm-offset-2 col-md-offset-3">
       <label class="col-md-4 form-group"  for="name">Name</label>
       <div class="col-md-6">
-        <form:input type="text" id="name" name="name" placeholder="category name" class="form-control name" path="name"/>
+        <form:input type="text" id="name" name="name" placeholder="product name" class="form-control name" path="name"/>
       </div>
     </div>
-	
-<div class="col-xs-8 col-sm-8  col-md-6 col-sm-offset-2 col-md-offset-3">
-      <label class="col-md-4 form-group"  for="description">Description</label>
-      <div class="col-md-6">
+<div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <label class="col-md-4 form-group"  for="description">description</label>
+      <div class="col-md-6 ">
         <form:input type="text" id="description" name="description" placeholder="description" class="form-control name" path="description"/>
       </div>
     </div>
-	</form>
-	</div>
-	</div>
-	</div>
 
-	
-<div align="center">
+
+    <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-md-6 ">
+    	        <c:if test="${category.id==0}">
+			      <input type="submit" value="Add" class="btn btn-primary"> 
+	         </c:if>
+	         <c:if test="${category.id!=0}">
+			      <input type="submit" value="Update" class="btn btn-primary"> 
+	         </c:if>
+	</div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    
+ <div align="center">
 <table style="width:80%">
-<caption>Categories</caption>y
 <thead>
 <tr>
-<th>Categor Id</th>
+<th>Category Id</th>
 <th>Category Name</th>
-<th>Category Description</th>
+<th> Description</th>
 <th>Edit</th>
 <th>Delete</th>
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${categoryList}" var ="category">
+<c:forEach items="${allCategory}" var ="category">
 <tr>
 <td><c:out value="${category.id}"/>
 <td><c:out value="${category.name}"/>
 <td><c:out value="${category.description}"/>
-<td><a href="addeditcategory/${category.id }">edit</a>
-<td><a href="adddeletecategory/${category.id }">delete</a>
+
+<td><a href="deleteById/${category.id}">delete</a>
+<td><a href="ItemById/${category.id}">edit</a>
 </tr>
 </c:forEach>
 </tbody>
 </table>
 </div>	
-	</body>
-	</html>
+ </form:form>
+ <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
+  <script src="${pageContext.request.contextPath}/app-resources/js/myapp.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/app-resources/css/style.css"/> 
+  </body>
+  </html>
+  
+

@@ -1,4 +1,4 @@
-package com.niit.shoppingcart.DAO;
+/*package com.niit.shoppingcart.DAO;
 
 import java.util.List;
 
@@ -8,9 +8,10 @@ public interface CategoryDAO {
 
 	public Boolean saveOrUpdate(Category category);
 	
-	public Boolean delete(String id);
+	public Boolean delete(Category category);
 	
-	public Category get(String id);
+	public Category get(int id);
 	
 	public List<Category> list();
 }
+*/

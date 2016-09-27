@@ -1,7 +1,12 @@
 package com.niit.shoppingcart.model;
 
+//import java.util.Set;
+
 import javax.persistence.Entity;
+//import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -12,13 +17,20 @@ import org.springframework.stereotype.Component;
 public class Supplier {
 	
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 	private String name;
-	private String Address;
-	public String getId() {
+	private String address;
+	
+	
+	/*@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
+	private Set<Product> products;*/
+	
+
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -28,12 +40,18 @@ public class Supplier {
 		this.name = name;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
-	
+	/*public Set<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+	*/
 	
 	
 }
