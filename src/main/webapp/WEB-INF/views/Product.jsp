@@ -25,37 +25,12 @@ width:100%;
 </head>
 <body style="background-color:#CCCCCC;">
 
-<div class="text-center" >
-  <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
-    <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
-  <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
-  <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png" alt="twitter" width="30px" height="30px" align="right" >
-  <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
-  </h1>
-  
-  </div>
-  
-   <nav class="navbar navbar-inverse">
-   <div class="container-fluid"> 
-   <div class="navbar-header" class=" pull-left">
-     <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
-    </div>
-  
-   
-     <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	   <li><a href="HOME.jsp">HOME</a></li>
-    	   <li class="active"><a href="#">PRODUCTS</a></li>
-           <li><a href="HOME.jsp">LOGOUT</a></li>
-		   <li><a href="#">CART <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-      </ul>
-   </div>
-  </nav>
  
-  <c:url var="addAction" value="addItem" ></c:url>
+  <c:url var="addAction" value="addProduct" ></c:url>
 
 <form:form action="${addAction}" modelAttribute="product" id="btn-add">
    <h3>
-                    <c:if test="$(product.id==0}">
+                    <c:if test="${product.id==0}">
 		       Add New Item
 	            </c:if>
 	            <c:if test="${!empty product.id}">
@@ -64,17 +39,17 @@ width:100%;
 	            </c:if>
          </h3>
           <div class="container">
- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+ <!-- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
   <ul class="nav nav-tabs col-lg-12">
-    <li class="active"><a href="Product.jsp">Product</a></li>
-    <li><a href="Supplier.jsp">Supplier</a></li>
-    <li><a href="Category.jsp">Category</a></li>
+    <li class="active">Product</li>
+    <li>Supplier</li>
+    <li>Category</li>
   </ul>
-  </div>
+  </div> -->
   <br>
-<div class="clearfix"></div>
+<!-- <div class="clearfix"></div>
 	<div class="Product_Content tab-content">
-            <div id="Product" class="tab-pane active">
+            <div id="Product" class="tab-pane active"> -->
             <form class="form-horizontal">
  
   <br>
@@ -101,11 +76,43 @@ width:100%;
     </div>
 
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <label class="col-md-4 form-group"  for="categoryid">Category Id</label>
+      <div class="col-md-6">
+         <form:select id="categoryid" name="categoryid" class="form-control product-type" path="categoryid">
+         <c:forEach items="${categoryList}" var="category">
+         <form:option class="input1" value="${category.id}">${category.name}</form:option>
+         </c:forEach>
+		</form:select>
+       </div>
+    </div>
+    
+<div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3"> 
+      <label class="col-md-4 form-group"  for="supplierid">Supplier Id</label>
+      <div class="col-md-6">
+ <form:select id="supplierid" name="supplierid" class="form-control product-type" path="supplierid">
+         <c:forEach items="${supplierList}" var="supplier">
+         <form:option class="input1" value="${supplier.id}">${supplier.name}</form:option>
+         </c:forEach>
+		</form:select>
+                  </div>
+    </div>
+
+<div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <label class="col-md-4 form-group"  for="price">price</label>
       <div class="col-md-6 ">
         <form:input type="text" id="price" name="price" placeholder="product price" class="form-control name" path="price"/>
       </div>
     </div>
+    
+
+<div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <label class="col-md-4 form-group"  for="stock">Stock</label>
+      <div class="col-md-6">
+        <form:input type="text" id="stock" name="stock" placeholder="product stock" class="form-control name" path="stock"/>
+      </div>
+    </div>    
+    
+    
     <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
     <div class="col-md-6 ">
     	        <c:if test="${product.id==0}">
@@ -118,30 +125,32 @@ width:100%;
     </div>
     </form>
     </div>
-    </div>
-    </div>
+    
  <div align="center">
 <table style="width:80%">
 <thead>
 <tr>
-<th>Product Id</th>
+<th>Product ID</th>
 <th>Product Name</th>
-<th> Price</th>
-<th> Description</th>
-<th>Edit</th>
+<th>Category ID</th>
+<th>Supplier ID</th>
+<th>Price</th>
+<th>Stock</th>
 <th>Delete</th>
+<th>Edit</th>
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${allData}" var ="product">
+<c:forEach items="${allProduct}" var ="product">
 <tr>
 <td><c:out value="${product.id}"/>
 <td><c:out value="${product.name}"/>
-<td><c:out value="${product.description}"/>
+<td><c:out value="${product.categoryid}"/>
+<td><c:out value="${product.supplierid}"/>
 <td><c:out value="${product.price}"/>
-
-<td><a href="deleteById/${product.id}">delete</a>
-<td><a href="ItemById/${product.id}">edit</a>
+<td><c:out value="${product.stock}"/>
+<td><a href="ProductDeleteById/${product.id}">delete</a>
+<td><a href="ProductEditById/${product.id}">edit</a>
 </tr>
 </c:forEach>
 </tbody>
@@ -165,6 +174,7 @@ width:100%;
     pageEncoding="ISO-8859-1"%>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
     
+
 
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <label class="col-md-4 form-group"  for="category_id">Category Id</label>

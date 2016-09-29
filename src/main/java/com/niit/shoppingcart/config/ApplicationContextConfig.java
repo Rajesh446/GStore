@@ -52,8 +52,8 @@ public class ApplicationContextConfig {
 		public SessionFactory getSessionFactory(DataSource dataSource) {
 			LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 			sessionBuilder.addProperties(getHibernateProperties());
-			//sessionBuilder.addAnnotatedClasses(Product.class);
-			//sessionBuilder.addAnnotatedClasses(Category.class);
+			sessionBuilder.addAnnotatedClasses(Product.class);
+			sessionBuilder.addAnnotatedClasses(Category.class);
 			sessionBuilder.addAnnotatedClasses(Supplier.class);
 			System.out.println("Session");
 			
@@ -69,7 +69,7 @@ public class ApplicationContextConfig {
 			return transactionManager;
 		}
 	
-		/*@Autowired
+		@Autowired
 		@Bean(name = "categoryDAO")
 		public CategoryDAO getCategorDao(SessionFactory sessionFactory) {
 			return new CategoryDAOImpl(sessionFactory);
@@ -80,14 +80,15 @@ public class ApplicationContextConfig {
 		@Bean(name = "productDAO")
 		public ProductDAO getProductDao(SessionFactory sessionFactory) {
 				return new ProductDAOImpl(sessionFactory);
-		}*/
+		}
 		
 		
 		@Autowired
 		@Bean(name = "supplierDAO")
-		public SupplierDAO getSupplierDAO(SessionFactory sessionFactory) {
+		public SupplierDAO getSupplierDao(SessionFactory sessionFactory) {
 				return new SupplierDAOImpl(sessionFactory);
 		}
+		
 		/*
 		@Autowired
 		@Bean(name = "userDetailsDAO")

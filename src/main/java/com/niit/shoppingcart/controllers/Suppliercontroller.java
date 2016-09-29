@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.shoppingcart.DAO.*;
@@ -19,7 +20,7 @@ public class Suppliercontroller {
 	@Autowired
 	private SupplierDAO supplierDAO;
 	
-	@RequestMapping(value="/",method = RequestMethod.GET)
+/*	@RequestMapping(value="/",method = RequestMethod.GET)
 	public String landPage(@ModelAttribute("supplier")Supplier supplier,BindingResult result,Model model)
 	{
 		
@@ -43,19 +44,39 @@ public class Suppliercontroller {
 		return "redirect:allSupplier";
 		
 	}
-	@RequestMapping(value="/ItemById/{id}",method = RequestMethod.GET)
+*/	
+	
+
+	@RequestMapping(value="/Supplier",method = RequestMethod.GET)
+	public ModelAndView landPage(@ModelAttribute("supplier")Supplier supplier,BindingResult result,Model model)
+	{
+		ModelAndView mv=new ModelAndView("/Admin");
+		mv.addObject("userclickedsupplier", "true");
+		mv.addObject("allSupplier",supplierDAO.list());
+		return mv;
+		
+	}
+	 
+	
+@RequestMapping(value="/addSupplier")
+public String addItem(@ModelAttribute("supplier") Supplier s){
+		
+		supplierDAO.saveOrUpdate(s);
+		return "redirect:/Supplier";
+		
+	}
+	@RequestMapping(value="/SupplierEditById/{id}",method = RequestMethod.GET)
 	public String editItem(@PathVariable("id") int id,RedirectAttributes redirectAttributes)
 	{
 		redirectAttributes.addFlashAttribute("supplier", supplierDAO.get(id));
-		return "redirect:/allSupplier";
+		return "redirect:/Supplier";
 		
 }
-	@RequestMapping(value="/deleteById/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/SupplierDeleteById/{id}",method = RequestMethod.GET)
 	public String deleteItem(@PathVariable("id") int id,Supplier supplier)
 	{
 		supplierDAO.delete(supplier);
-		return "redirect:/allSupplier";
+		return "redirect:/Supplier";
 		
 }
 }
-

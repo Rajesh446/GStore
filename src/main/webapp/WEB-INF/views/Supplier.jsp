@@ -14,33 +14,7 @@
 </head>
 <body>
 
-<div class="text-center" >
-  <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
-    <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
-  <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
-  <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png" alt="twitter" width="30px" height="30px" align="right" >
-  <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
-  </h1>
-  
-  </div>
-  
-   <nav class="navbar navbar-inverse">
-   <div class="container-fluid"> 
-   <div class="navbar-header" class=" pull-left">
-     <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
-    </div>
-  
-   
-     <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	   <li><a href="HOME.jsp">HOME</a></li>
-    	   <li class="active"><a href="#">PRODUCTS</a></li>
-           <li><a href="HOME.jsp">LOGOUT</a></li>
-		   <li><a href="#">CART <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-      </ul>
-   </div>
-  </nav>
- 
-  <c:url var="addAction" value="addItem" ></c:url>
+  <c:url var="addAction" value="addSupplier" ></c:url>
 
 <form:form action="${addAction}" modelAttribute="supplier" id="btn-add">
    <h3>
@@ -53,7 +27,7 @@
 	            </c:if>
          </h3>
           <div class="container">
- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+ <!-- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
   <ul class="nav nav-tabs col-lg-12">
     <li><a href="Product.jsp">Product</a></li>
     <li class="active"><a href="Supplier.jsp">Supplier</a></li>
@@ -63,7 +37,7 @@
   <br>
 <div class="clearfix"></div>
 	<div class="Product_Content tab-content">
-            <div id="supplier" class="tab-pane active">
+            <div id="supplier" class="tab-pane active"> -->
             <form class="form-horizontal">
  
   <br>
@@ -102,8 +76,6 @@
     </div>
     </form>
     </div>
-    </div>
-    </div>
     
  <div align="center">
 <table style="width:80%">
@@ -123,8 +95,8 @@
 <td><c:out value="${supplier.name}"/>
 <td><c:out value="${supplier.address}"/>
 
-<td><a href="deleteById/${supplier.id}">delete</a>
-<td><a href="ItemById/${supplier.id}">edit</a>
+<td><a href="SupplierDeleteById/${supplier.id}">delete</a>
+<td><a href="SupplierEditById/${supplier.id}">edit</a>
 </tr>
 </c:forEach>
 </tbody>

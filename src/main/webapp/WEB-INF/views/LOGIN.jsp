@@ -28,7 +28,7 @@ width:100%;
 
  <%@include file="Header.jsp"%> 
 
-  <form:form name="submitForm" method="GET">
+  <form:form name="submitForm" method="POST">
   <form class="form-horizontal" >
  <div class="row centered-form">
         <div class="col-xs-8 col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-3">
@@ -45,7 +45,7 @@ width:100%;
 <div class="form-group">
   <label class="col-md-3 control-label" for="username">User Name</label>  
   <div class="col-md-7">
-  <input id="username" name="username" type="text" placeholder="user name" class="form-control input-md" required="">
+  <form:input id="username" name="username" type="text" placeholder="user name" class="form-control input-md" required="" path="username"/>
     
   </div>
 </div>
@@ -54,7 +54,7 @@ width:100%;
 <div class="form-group">
   <label class="col-md-3 control-label" for="password">Password</label>  
   <div class="col-md-7">
-  <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+  <form:input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="" path="password"/>
     
   </div>
 </div>

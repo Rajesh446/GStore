@@ -1,4 +1,4 @@
-/*package com.niit.shoppingcart.DAO;
+package com.niit.shoppingcart.DAO;
 
 import java.util.List;
 
@@ -12,4 +12,3 @@ public interface ProductDAO {
 	public List<Product> list();
 
 }
-*/

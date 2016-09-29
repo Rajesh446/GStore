@@ -1,4 +1,4 @@
-/*package com.niit.shoppingcart.DAO;
+package com.niit.shoppingcart.DAO;
 
 import java.util.List;
 import org.hibernate.Criteria;
@@ -78,4 +78,3 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 }
-*/

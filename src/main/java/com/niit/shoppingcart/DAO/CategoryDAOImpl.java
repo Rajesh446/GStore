@@ -1,4 +1,4 @@
-/*package com.niit.shoppingcart.DAO;
+package com.niit.shoppingcart.DAO;
 
 import java.util.List;
 
@@ -75,4 +75,3 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 		}
-*/
