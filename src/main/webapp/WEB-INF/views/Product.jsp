@@ -24,6 +24,40 @@ width:100%;
   </style>
 </head>
 <body style="background-color:#CCCCCC;">
+ <div class="text-center" >
+  <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
+    <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
+  <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
+  <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png" alt="twitter" width="30px" height="30px" align="right" >
+  <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
+  </h1>
+  
+  </div>
+  
+   <nav class="navbar navbar-inverse">
+   <div class="container-fluid"> 
+   <div class="navbar-header" class=" pull-left">
+     <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
+    </div>
+  
+  <!--  <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="q">
+            <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+    </div> -->
+     <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
+      	   <li class="active"><a href="HOME">HOME</a></li>
+    	   <li><a href="Product">PRODUCT</a></li>
+   <!--         <li><a href="ABOUTUS">ABOUTUS</a></li>
+		   <li><a href="CONTACTUS">CONTACTUS</a></li> -->
+      </ul>
+</div>
+  </nav>
 
  
   <c:url var="addAction" value="addProduct" ></c:url>
@@ -31,7 +65,7 @@ width:100%;
 <form:form action="${addAction}" modelAttribute="product" id="btn-add">
    <h3>
                     <c:if test="${product.id==0}">
-		       Add New Item
+		       
 	            </c:if>
 	            <c:if test="${!empty product.id}">
 		     
@@ -39,17 +73,17 @@ width:100%;
 	            </c:if>
          </h3>
           <div class="container">
- <!-- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+  <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
   <ul class="nav nav-tabs col-lg-12">
-    <li class="active">Product</li>
-    <li>Supplier</li>
-    <li>Category</li>
+    <li class="active"><a href="Product">Product</a></li>
+    <li><a href="Category">Category</a></li>
+     <li><a href="Supplier">Supplier</a></li>
   </ul>
-  </div> -->
+  </div> 
   <br>
-<!-- <div class="clearfix"></div>
+ <div class="clearfix"></div>
 	<div class="Product_Content tab-content">
-            <div id="Product" class="tab-pane active"> -->
+            <div id="Product" class="tab-pane active">
             <form class="form-horizontal">
  
   <br>
@@ -57,7 +91,7 @@ width:100%;
  <c:if test="${product.id!=0}">
       <label class="col-md-4 form-group"  for="id">Id</label>
       <div class="col-md-6">
-        <form:input type="text" id="id" name="id" placeholder="product id" class="form-control name" path="id"/>
+        <form:input type="text" placeholder="product id" class="form-control name" path="id"/>
       </div>
      </c:if>
          </div>
@@ -65,21 +99,15 @@ width:100%;
     <div class="col-xs-8 col-sm-8  col-md-6 col-sm-offset-2 col-md-offset-3">
       <label class="col-md-4 form-group"  for="name">Name</label>
       <div class="col-md-6">
-        <form:input type="text" id="name" name="name" placeholder="product name" class="form-control name" path="name"/>
-      </div>
-    </div>
-<div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-      <label class="col-md-4 form-group"  for="description">description</label>
-      <div class="col-md-6 ">
-        <form:input type="text" id="description" name="description" placeholder="description" class="form-control name" path="description"/>
+        <form:input type="text" placeholder="product name" class="form-control name" path="name"/>
       </div>
     </div>
 
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-      <label class="col-md-4 form-group"  for="categoryid">Category Id</label>
+      <label class="col-md-4 form-group"  for="category_id">Category Name</label>
       <div class="col-md-6">
-         <form:select id="categoryid" name="categoryid" class="form-control product-type" path="categoryid">
-         <c:forEach items="${categoryList}" var="category">
+         <form:select  class="form-control product-type" path="category_id">
+         <c:forEach items="${allCategory}" var="category">
          <form:option class="input1" value="${category.id}">${category.name}</form:option>
          </c:forEach>
 		</form:select>
@@ -87,10 +115,10 @@ width:100%;
     </div>
     
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3"> 
-      <label class="col-md-4 form-group"  for="supplierid">Supplier Id</label>
+      <label class="col-md-4 form-group"  for="supplier_id">Supplier Name</label>
       <div class="col-md-6">
- <form:select id="supplierid" name="supplierid" class="form-control product-type" path="supplierid">
-         <c:forEach items="${supplierList}" var="supplier">
+ <form:select  class="form-control product-type" path="supplier_id">
+         <c:forEach items="${allSupplier}" var="supplier">
          <form:option class="input1" value="${supplier.id}">${supplier.name}</form:option>
          </c:forEach>
 		</form:select>
@@ -100,7 +128,7 @@ width:100%;
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <label class="col-md-4 form-group"  for="price">price</label>
       <div class="col-md-6 ">
-        <form:input type="text" id="price" name="price" placeholder="product price" class="form-control name" path="price"/>
+        <form:input type="text"  placeholder="product price" class="form-control name" path="price"/>
       </div>
     </div>
     
@@ -108,13 +136,23 @@ width:100%;
 <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <label class="col-md-4 form-group"  for="stock">Stock</label>
       <div class="col-md-6">
-        <form:input type="text" id="stock" name="stock" placeholder="product stock" class="form-control name" path="stock"/>
+        <form:input type="text" placeholder="product stock" class="form-control name" path="stock"/>
       </div>
     </div>    
+    <%-- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <label class="col-md-4 form-group" for="image">Image:</label>
+					<form:input type="file"
+						class=" btn btn-default btn-block form-control" path="image"
+							required="true" />
+				</div>
+				
+					
+					<br>
+					<td><input type="submit" class="btn btn-primary" value="Save" /></td> --%>
     
     
     <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <div class="col-md-6 ">
+    <div class="col-md-4 ">
     	        <c:if test="${product.id==0}">
 			      <input type="submit" value="Add" class="btn btn-primary"> 
 	         </c:if>
@@ -123,7 +161,10 @@ width:100%;
 	         </c:if>
 	</div>
     </div>
+    
     </form>
+    </div>
+    </div>
     </div>
     
  <div align="center">
@@ -132,12 +173,13 @@ width:100%;
 <tr>
 <th>Product ID</th>
 <th>Product Name</th>
-<th>Category ID</th>
-<th>Supplier ID</th>
+<th>Category Name</th>
+<th>Supplier Name</th>
 <th>Price</th>
 <th>Stock</th>
 <th>Delete</th>
 <th>Edit</th>
+
 </tr>
 </thead>
 <tbody>
@@ -145,10 +187,14 @@ width:100%;
 <tr>
 <td><c:out value="${product.id}"/>
 <td><c:out value="${product.name}"/>
-<td><c:out value="${product.categoryid}"/>
-<td><c:out value="${product.supplierid}"/>
+<td><c:out value="${product.category_id}"/>
+<td><c:out value="${product.supplier_id}"/>
 <td><c:out value="${product.price}"/>
 <td><c:out value="${product.stock}"/>
+<%-- <td><div class="thumbnail">
+								<img height="50px" width="50px" alt="${product.id }"
+									src="<c:url value="/resources/images/${product.id }.jpg"></c:url>">
+									</div> --%>
 <td><a href="ProductDeleteById/${product.id}">delete</a>
 <td><a href="ProductEditById/${product.id}">edit</a>
 </tr>

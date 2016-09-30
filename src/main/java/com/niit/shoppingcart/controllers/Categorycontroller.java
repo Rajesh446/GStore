@@ -48,8 +48,8 @@ public String addItem(@ModelAttribute("category") Category c){
 	@RequestMapping(value="/Category",method = RequestMethod.GET)
 	public ModelAndView landPage(@ModelAttribute("category")Category category,BindingResult result,Model model)
 	{
-		ModelAndView mv=new ModelAndView("/Admin");
-		mv.addObject("userclickedcategory", "true");
+		ModelAndView mv=new ModelAndView("/Category");
+		//mv.addObject("userclickedcategory", "true");
 		mv.addObject("allCategory",categoryDAO.list());
 		return mv;
 		

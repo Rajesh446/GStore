@@ -22,7 +22,6 @@ public class Supplier {
 	private String name;
 	private String address;
 	
-	
 	@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
 	private Set<Product> products;
 	
