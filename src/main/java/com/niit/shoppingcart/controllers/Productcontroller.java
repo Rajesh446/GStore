@@ -1,6 +1,7 @@
 package com.niit.shoppingcart.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -55,27 +56,38 @@ public class Productcontroller {
 			return "Product";
 		}*/
 	@RequestMapping(value="/addProduct")
-	public String addItem(@ModelAttribute("product") Product p){
-			
-			productDAO.saveOrUpdate(p);
+	public String addProduct(@ModelAttribute("product") Product product , Model model,HttpServletRequest request, MultipartFile file) throws IOException
+	{
 		
-	    	/*MultipartFile file=p.getImage();
-			String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-	        path = Paths.get(rootDirectory + "\\resources\\images\\"+p.getId()+".jpg");
-	        if (file != null && !file.isEmpty()) {
-	            try {
-	            	System.out.println("Image Saving Start");
-	            	file.transferTo(new File(path.toString()));
-	            	System.out.println("Image Saved");
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	                System.out.println("Error");
-	                throw new RuntimeException("item image saving failed.", e);
+		
+	            productDAO.saveOrUpdate(product);
+	    		System.out.println("Data Inserted");
+	            //String path = request.getSession().getServletContext().getRealPath("/resources/images/" + user.getUserid() + ".jpg");
+	    		MultipartFile image = product.getImage();
+	            //Path path;
+	            String path = request.getSession().getServletContext().getRealPath("/resources/images/Product/"+product.getId()+".jpg");
+	            System.out.println("Path="+path);
+	            System.out.println("File name = " + product.getImage().getOriginalFilename());
+	          
+	            if(image!=null && !image.isEmpty())
+	            {
+	            	try
+	            	{
+	            		image.transferTo(new File(path.toString()));
+	            		System.out.println("Image saved  in:"+path.toString());
+	            	}
+	            	catch(Exception e)
+	            	{
+	            		e.printStackTrace();
+	            		System.out.println("Image not saved");
+	            	}
 	            }
-	        }*/
-			return "redirect:/Product";
-			
-		}
+	    	
+	     	    
+	    return "Product";
+	
+		
+	}
 		@RequestMapping(value="/ProductEditById/{id}")
 		public String editItem(@PathVariable("id") int id,RedirectAttributes redirectAttributes)
 		{

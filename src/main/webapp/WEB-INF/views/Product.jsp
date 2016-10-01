@@ -51,8 +51,8 @@ width:100%;
         </form>
     </div> -->
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	   <li class="active"><a href="HOME">HOME</a></li>
-    	   <li><a href="Product">PRODUCT</a></li>
+      	   <li><a href="HOME">HOME</a></li>
+    	   <li class="active"><a href="Product">PRODUCT</a></li>
    <!--         <li><a href="ABOUTUS">ABOUTUS</a></li>
 		   <li><a href="CONTACTUS">CONTACTUS</a></li> -->
       </ul>
@@ -62,7 +62,7 @@ width:100%;
  
   <c:url var="addAction" value="addProduct" ></c:url>
 
-<form:form action="${addAction}" modelAttribute="product" id="btn-add">
+<form:form action="${addAction}" modelAttribute="product" id="btn-add" enctype="multipart/form-data">
    <h3>
                     <c:if test="${product.id==0}">
 		       
@@ -139,16 +139,16 @@ width:100%;
         <form:input type="text" placeholder="product stock" class="form-control name" path="stock"/>
       </div>
     </div>    
-    <%-- <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
     <label class="col-md-4 form-group" for="image">Image:</label>
-					<form:input type="file"
-						class=" btn btn-default btn-block form-control" path="image"
-							required="true" />
+			<div class="col-md-6">		
+			<form:input type="file" class=" btn btn-default btn-block form-control" path="image" required="true" />
+				</div>
 				</div>
 				
 					
-					<br>
-					<td><input type="submit" class="btn btn-primary" value="Save" /></td> --%>
+					<!-- <br>
+					<td><input type="submit" class="btn btn-primary" value="Save" /></td>  -->
     
     
     <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -191,10 +191,10 @@ width:100%;
 <td><c:out value="${product.supplier_id}"/>
 <td><c:out value="${product.price}"/>
 <td><c:out value="${product.stock}"/>
-<%-- <td><div class="thumbnail">
+ <td><div class="thumbnail">
 								<img height="50px" width="50px" alt="${product.id }"
-									src="<c:url value="/resources/images/${product.id }.jpg"></c:url>">
-									</div> --%>
+									src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>">
+									</div> 
 <td><a href="ProductDeleteById/${product.id}">delete</a>
 <td><a href="ProductEditById/${product.id}">edit</a>
 </tr>
@@ -202,11 +202,11 @@ width:100%;
 </tbody>
 </table>
 </div>	
- </form:form>
+ </form:form><%-- 
  <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
   <script src="${pageContext.request.contextPath}/app-resources/js/myapp.js"></script>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/app-resources/css/style.css"/> 
-    <%@include file="Footer.jsp"%> 
+     --%><%@include file="Footer.jsp"%> 
   </body>
   </html>
   

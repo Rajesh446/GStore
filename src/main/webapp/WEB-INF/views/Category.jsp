@@ -51,8 +51,8 @@ width:100%;
         </form>
     </div> -->
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	    <li class="active"><a href="HOME">HOME</a></li>
-    	   <li><a href="Product">PRODUCT</a></li>
+      	    <li><a href="HOME">HOME</a></li>
+    	   <li class="active"><a href="Product">PRODUCT</a></li>
     <!--        <li><a href="ABOUTUS">ABOUTUS</a></li>
 		   <li><a href="CONTACTUS">CONTACTUS</a></li> -->
       </ul>
@@ -150,9 +150,9 @@ width:100%;
 </table>
 </div>	
  </form:form>
- <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
+ <%-- <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
   <script src="${pageContext.request.contextPath}/app-resources/js/myapp.js"></script>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/app-resources/css/style.css"/> 
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/app-resources/css/style.css"/>  --%>
    <%@include file="Footer.jsp"%>
   </body>
   </html>

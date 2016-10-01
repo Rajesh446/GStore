@@ -80,7 +80,7 @@ public void setStock(int stock) {
 	this.stock = stock;
 }
 
-/*@Transient
+@Transient
 private MultipartFile image;
 
 public MultipartFile getImage() {
@@ -88,6 +88,6 @@ public MultipartFile getImage() {
 }
 public void setImage(MultipartFile image) {
 	this.image = image;
-}*/
+}
 
 }
