@@ -23,12 +23,12 @@ public class Product {
 private String name;
 private int category_id;
 private int supplier_id;
-@ManyToOne
+/*@ManyToOne
 @JoinColumn(name="category_id",insertable=false,updatable=false,nullable=false)
 private Category category;
 @ManyToOne
 @JoinColumn(name="supplier_id",insertable=false,updatable=false,nullable=false)
-private Supplier supplier;
+private Supplier supplier;*/
 private double  price;
 private int stock;
 public int getId() {
@@ -55,7 +55,7 @@ public int getSupplier_id() {
 public void setSupplier_id(int supplier_id) {
 	this.supplier_id = supplier_id;
 }
-public Category getCategory() {
+/*public Category getCategory() {
 	return category;
 }
 public void setCategory(Category category) {
@@ -67,7 +67,7 @@ public Supplier getSupplier() {
 public void setSupplier(Supplier supplier) {
 	this.supplier = supplier;
 }
-public double getPrice() {
+*/public double getPrice() {
 	return price;
 }
 public void setPrice(double price) {

@@ -22,8 +22,8 @@ public class Supplier {
 	private String name;
 	private String address;
 	
-	@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
-	private Set<Product> products;
+	/*@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
+	private Set<Product> products;*/
 	
 
 	public int getId() {
@@ -44,11 +44,11 @@ public class Supplier {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Set<Product> getProducts() {
+	/*public Set<Product> getProducts() {
 		return products;
 	}
 	public void setProducts(Set<Product> products) {
 		this.products = products;
-	}
+	}*/
 	
 }

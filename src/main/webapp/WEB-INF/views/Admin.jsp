@@ -64,8 +64,8 @@ width:100%;
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
       	   <li class="active"><a href="HOME">HOME</a></li>
     	   <li><a href="Product">PRODUCT</a></li>
-          <!--  <li><a href="ABOUTUS">ABOUTUS</a></li>
-		   <li><a href="CONTACTUS">CONTACTUS</a></li> -->
+          <li><a href="Category">CATEGORY</a></li>
+		   <li><a href="Supplier">SUPPLIER</a></li>
       </ul>
 </div>
   </nav>
@@ -75,7 +75,7 @@ width:100%;
 <c:import url="/WEB-INF/views/Product.jsp"/>
 </c:when>
 </c:choose>
- <%--  <c:choose>
+  <c:choose>
 <c:when test="${userclickedsupplier}">
 <c:import url="/WEB-INF/views/Supplier.jsp"/>
 </c:when>
@@ -86,7 +86,12 @@ width:100%;
 <c:import url="/WEB-INF/views/Category.jsp"/>
 </c:when>
 </c:choose>
-   --%>
+<c:choose>
+<c:when test="${userclickedhome}">
+<c:import url="/WEB-INF/views/HOME.jsp"/>
+</c:when>
+</c:choose>
+   
   <div class="container-fluid">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -129,7 +134,7 @@ width:100%;
     </a>
   </div>
 </div>
- <%@include file="Footer.jsp"%>
+ <%@include file="Footer.jsp"%> 
  
 </body>
 </html>

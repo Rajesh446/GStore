@@ -50,7 +50,6 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	@Transactional
-	@SuppressWarnings({ "rawtypes", "deprecation" })
 	public Supplier get(int id) {
 		String hql = "from"+" Supplier"+" where id=" +id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

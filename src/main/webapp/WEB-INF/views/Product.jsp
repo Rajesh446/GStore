@@ -51,14 +51,32 @@ width:100%;
         </form>
     </div> -->
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	   <li><a href="HOME">HOME</a></li>
-    	   <li class="active"><a href="Product">PRODUCT</a></li>
-   <!--         <li><a href="ABOUTUS">ABOUTUS</a></li>
-		   <li><a href="CONTACTUS">CONTACTUS</a></li> -->
+      	   <li class="active"><a href="HOME">HOME</a></li>
+    	   <li><a href="Product">PRODUCT</a></li>
+          <li><a href="Category">CATEGORY</a></li>
+		   <li><a href="Supplier">SUPPLIER</a></li>
       </ul>
 </div>
   </nav>
-
+<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		function MyController($scope, $http) {
+			$scope.sortType = 'name'; // set the default sort type
+			$scope.sortReverse = false; // set the default sort order
+			$scope.search = '';
+			$scope.getDataFromServer = function() {
+				$http({
+					method : 'GET',
+					url : 'productgson'
+				}).success(function(data, status, headers, config) {
+					$scope.products = data;// alert(data); 
+				}).error(function(data, status, headers, config) {
+				});
+			};
+		};
+	</script>
  
   <c:url var="addAction" value="addProduct" ></c:url>
 
@@ -140,7 +158,7 @@ width:100%;
       </div>
     </div>    
     <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <label class="col-md-4 form-group" for="image">Image:</label>
+    <label class="col-md-4 form-group" for="image">Image</label>
 			<div class="col-md-6">		
 			<form:input type="file" class=" btn btn-default btn-block form-control" path="image" required="true" />
 				</div>
@@ -166,10 +184,19 @@ width:100%;
     </div>
     </div>
     </div>
+    <br>
+    
+    <div class="container" data-ng-app="myApp"
+			data-ng-controller="MyController" data-ng-init="getDataFromServer()"
+			style="overflow: auto; height: 400px; width: 70%">
+			<form>
+				<input data-ng-model="search" type="text"
+					placeholder=" Search Supplier" style="width: 20%">
+			</form>
     
  <div align="center">
-<table style="width:80%">
-<thead>
+<table style="width:80%" class="table table-hover" >
+<thead style="background-color:rgb(128,128,128)">
 <tr>
 <th>Product ID</th>
 <th>Product Name</th>
@@ -177,31 +204,37 @@ width:100%;
 <th>Supplier Name</th>
 <th>Price</th>
 <th>Stock</th>
+<th>Image</th>
 <th>Delete</th>
 <th>Edit</th>
 
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${allProduct}" var ="product">
-<tr>
-<td><c:out value="${product.id}"/>
-<td><c:out value="${product.name}"/>
-<td><c:out value="${product.category_id}"/>
-<td><c:out value="${product.supplier_id}"/>
-<td><c:out value="${product.price}"/>
-<td><c:out value="${product.stock}"/>
- <td><div class="thumbnail">
-								<img height="50px" width="50px" alt="${product.id }"
-									src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>">
-									</div> 
-<td><a href="ProductDeleteById/${product.id}">delete</a>
-<td><a href="ProductEditById/${product.id}">edit</a>
+
+<%-- <c:forEach items="${allProduct}" var ="product"> --%>
+<tr data-ng-repeat="product in products | orderBy:sortType:sortReverse | filter:search">
+<td>{{product.id}}</td>
+<td>{{product.name}}</td>
+<td>{{product.category_id}}</td>
+<td>{{product.supplier_id}}</td>
+<td>{{product.price}}</td>
+<td>{{product.stock}}</td>
+ <td><div class="thumbnail"><img height="50px" width="50px" alt="{{product.id }}" src="<c:url value="/resources/images/Product/{{product.id }}.jpg"></c:url>">
+</div> 
+<td><a href="ProductDeleteById/{{product.id}}"> <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-remove"></span>Delete</button></a>
+<td><a href="ProductEditById/{{product.id}}">  <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-pencil"></span>Edit</button></a>
+
 </tr>
-</c:forEach>
+
+
+
+<%-- 
+</c:forEach> --%>
 </tbody>
 </table>
 </div>	
+</div>
  </form:form><%-- 
  <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
   <script src="${pageContext.request.contextPath}/app-resources/js/myapp.js"></script>

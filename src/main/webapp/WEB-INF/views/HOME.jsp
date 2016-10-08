@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,6 +39,18 @@ width:100%;
 
 
  <%@include file="Header.jsp"%> 
+ 
+ <c:choose>
+<c:when test="${UserClickedlogin}">
+<c:import url="/WEB-INF/view/LOGIN.jsp"></c:import>
+</c:when>
+</c:choose> 
+<c:choose>
+<c:when test="${UserClickeduser}">
+<c:import url="/WEB-INF/view/REGISTER.jsp"></c:import>
+</c:when>
+</c:choose>  
+  
   <div class="container-fluid">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -79,7 +93,30 @@ width:100%;
     </a>
   </div>
 </div>
+
+<c:forEach items="${allProduct}" var="product">
+	 <div class="container-fluid">
+	<!--  <div class="row"> -->
+     <div class="col-xs-3">
+ 	 			 
+						<a href="ShowProduct/${product.id}"  class="thumbnail"> <img height="200px"
+							width="200px" alt="${product.id }"
+							src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>"></a>
+							</div>
+							</div>
+							</div>
+							
+							</c:forEach>
+ 	       
  <%@include file="Footer.jsp"%>
 
 </body>
 </html>
+
+
+
+
+
+
+
+

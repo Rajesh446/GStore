@@ -22,7 +22,7 @@ public class Category {
 	private String name;
 	private String description;
     
-	@OneToMany(mappedBy="category",fetch=FetchType.EAGER)
+	/*@OneToMany(mappedBy="category",fetch=FetchType.EAGER)
 	private Set<Product> products;
 
 	public Set<Product> getProducts() {
@@ -31,7 +31,7 @@ public class Category {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
-	}
+	}*/
 
 	public int getId() {
 		return id;

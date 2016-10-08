@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
 
 <style>
 footer {
@@ -20,8 +22,27 @@ footer {
 body {
 width:100%;
 }
-  
+
   </style>
+  
+<script>
+	var app = angular.module('myApp', []);
+	function MyController($scope, $http) {
+		$scope.sortType = 'name'; // set the default sort type
+		$scope.sortReverse = false; // set the default sort order
+		$scope.search = '';
+		$scope.getDataFromServer = function() {
+			$http({
+				method : 'GET',
+				url : 'categorygson'
+			}).success(function(data, status, headers, config) {
+				$scope.categories = data;// alert(data); 
+			}).error(function(data, status, headers, config) {
+			});
+		};
+	};
+</script>
+   
 </head>
 <body style="background-color:#CCCCCC;">
  <div class="text-center" >
@@ -50,14 +71,16 @@ width:100%;
         </div>
         </form>
     </div> -->
-     <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	    <li><a href="HOME">HOME</a></li>
-    	   <li class="active"><a href="Product">PRODUCT</a></li>
-    <!--        <li><a href="ABOUTUS">ABOUTUS</a></li>
-		   <li><a href="CONTACTUS">CONTACTUS</a></li> -->
+    <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
+      	   <li class="active"><a href="HOME">HOME</a></li>
+    	   <li><a href="Product">PRODUCT</a></li>
+          <li><a href="Category">CATEGORY</a></li>
+		   <li><a href="Supplier">SUPPLIER</a></li>
       </ul>
 </div>
   </nav>
+
+  
   <c:url var="addAction" value="addCategory" ></c:url>
 
 <form:form action="${addAction}" modelAttribute="category" id="btn-add">
@@ -123,32 +146,46 @@ width:100%;
     </div>
     </div>
     
+    <div class="container" data-ng-app="myApp"
+				data-ng-controller="MyController" data-ng-init="getDataFromServer()"
+				style="overflow: auto; height: 400px; width: 70%">
+				<form>
+					<input
+					
+						data-ng-model="search" type="text" placeholder=" Search Category"
+						style="width: 20%">
+				</form>
+				<br>
     
+  
  <div align="center">
-<table style="width:80%">
-<thead>
+<table style="width:80%" class="table table-hover" >
+<thead style="background-color:rgb(128,128,128)">
 <tr>
 <th>Category Id</th>
 <th>Category Name</th>
 <th> Description</th>
-<th>Edit</th>
 <th>Delete</th>
+<th>Edit</th>
 </tr>
 </thead>
-<tbody>
-<c:forEach items="${allCategory}" var ="category">
-<tr>
-<td><c:out value="${category.id}"/>
-<td><c:out value="${category.name}"/>
-<td><c:out value="${category.description}"/>
 
-<td><a href="CategoryDeleteById/${category.id}">delete</a>
-<td><a href="CategoryEditById/${category.id}">edit</a>
+<%-- <c:forEach items="${allCategory}" var ="category"> --%>
+ <tr data-ng-repeat="category in categories | orderBy:sortType:sortReverse | filter:search">
+ 
+<td>{{category.id}}</td>
+<td>{{category.name}}</td>
+<td>{{category.description}}</td>
+
+<td><a href="CategoryDeleteById/{{category.id}}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-remove"></span>Delete</button></a>
+<td><a href="CategoryEditById/{{category.id}}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-pencil"></span>Edit</button></a>
 </tr>
-</c:forEach>
-</tbody>
+<%-- </c:forEach> --%>
+
 </table>
 </div>	
+</div>
+
  </form:form>
  <%-- <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
   <script src="${pageContext.request.contextPath}/app-resources/js/myapp.js"></script>
@@ -156,5 +193,4 @@ width:100%;
    <%@include file="Footer.jsp"%>
   </body>
   </html>
-  
 

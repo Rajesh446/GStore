@@ -36,25 +36,17 @@ width:100%;
 			    		<h3 class="panel-title" style="text-align:center;">Registration Form</h3>
 			 			</div>
 			 			<div class="panel-body">
-			    		<form role="form">
+<form role="form">
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">First name</label>  
+  <label class="col-md-4 control-label" for="Id">Id</label>  
   <div class="col-md-6">
-  <form:input id="firstname" name="firstname" type="text" placeholder="first name" class="form-control input-md" path="firstname"/>
+  <form:input id="Id" name="Id" type="text" placeholder="user id" class="form-control input-md" path="userId"/>
     
   </div>
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="lastname">Last name</label>  
-  <div class="col-md-6">
-  <form:input id="lastname" name="lastname" type="text" placeholder="last name" class="form-control input-md" path="lastname"/>
-    
-  </div>
-</div>
 
 
 <div class="form-group">
@@ -102,20 +94,20 @@ width:100%;
   </div>
 </div>
 
-</div>
-
 <div class="form-group">
 <div class="col-xs-8 col-sm-6 col-md-4 col-sm-offset-2 col-md-offset-4">
 <input type="submit" value="Register" class="btn btn-info btn-block">
 </div>
 </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</form>
 </form:form>
-</div>
 
-</div>
-</div>
-</form>
-</form>
+
  <%@include file="Footer.jsp"%> 
 
 </body>
