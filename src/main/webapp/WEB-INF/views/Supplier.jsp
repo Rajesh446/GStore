@@ -166,7 +166,7 @@ body {
 			</form>
 		
 			<br>
-			<div class="container">
+			<div class="container-fluid">
 			 <div align="center">
 				<table style="width: 80%" class="table table-hover">
 					<thead style="background-color: rgb(128, 128, 128)">

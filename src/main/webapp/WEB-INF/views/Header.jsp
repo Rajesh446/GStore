@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<style>
+body{
+padding-top:0px;
+}
+</style>
 </head>
 
 <body style="background-color:#CCCCCC;">
@@ -21,23 +27,34 @@
   <div class="container-fluid"> 
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
       
-      <li><a href="HOME.jsp">HOME</a></li>
-       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li> 
-        </ul>
-      </li>
-      <li><a href="REGISTER.jsp">REGISTER</a></li>
-      <li><a href="LOGIN.jsp">LOGIN</a></li>
-	  <li><a href="ABOUTUS.jsp">ABOUT US</a></li>
-	  <li><a href="CONTACTUS.jsp">CONTACT US</a></li>
+      <li><a href="HOME">HOME</a></li>
+      <li><a href="REGISTER">REGISTER</a></li>
+      <li><a href="LOGIN">LOGIN</a></li>
+	  <li><a href="ABOUTUS">ABOUT US</a></li>
+	  <li><a href="CONTACTUS">CONTACT US</a></li>
     </ul>
    </div>
   </nav>
+  
+  <c:choose>
+<c:when test="${userclickedlogin}">
+<c:import url="/WEB-INF/view/LOGIN.jsp"></c:import>
+</c:when>
+</c:choose> 
+<c:choose>
+<c:when test="${userclickeduser}">
+<c:import url="/WEB-INF/view/REGISTER.jsp"></c:import>
+</c:when>
+</c:choose>
+  
+ <!--  <div class="container-fluid"  align="center"> 
+    <ul class="nav nav-pills nav-justified" style="width:60%" >
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Menu 1</a></li>
+    <li><a href="#">Menu 2</a></li>
+    <li><a href="#">Menu 3</a></li>
+  </ul>
+  </div> -->
 
 </body>
 </html>

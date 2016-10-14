@@ -157,7 +157,7 @@ width:100%;
 				</form>
 				<br>
     
-  
+ <div class="container-fluid">
  <div align="center">
 <table style="width:80%" class="table table-hover" >
 <thead style="background-color:rgb(128,128,128)">
@@ -184,6 +184,7 @@ width:100%;
 
 </table>
 </div>	
+</div>
 </div>
 
  </form:form>

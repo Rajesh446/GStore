@@ -20,6 +20,7 @@
       width:100%;
 	  height:400px;
       margin: auto;
+      padding-top:0px;
   }
   
 footer {
@@ -41,12 +42,12 @@ width:100%;
  <%@include file="Header.jsp"%> 
  
  <c:choose>
-<c:when test="${UserClickedlogin}">
+<c:when test="${userclickedlogin}">
 <c:import url="/WEB-INF/view/LOGIN.jsp"></c:import>
 </c:when>
 </c:choose> 
 <c:choose>
-<c:when test="${UserClickeduser}">
+<c:when test="${userclickeduser}">
 <c:import url="/WEB-INF/view/REGISTER.jsp"></c:import>
 </c:when>
 </c:choose>  
@@ -95,28 +96,34 @@ width:100%;
 </div>
 
 <c:forEach items="${allProduct}" var="product">
-	 <div class="container-fluid">
-	<!--  <div class="row"> -->
-     <div class="col-xs-3">
+		<!--  <div class="row"> -->
+     <div class="col-xs-3" class="thumbnail">
  	 			 
-						<a href="ShowProduct/${product.id}"  class="thumbnail"> <img height="200px"
-							width="200px" alt="${product.id }"
-							src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>"></a>
+	<a href="ShowProduct/${product.id}" > <img height="200px" width="200px" alt="${product.id }"
+	src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>"></a>
+  <div class="desc">
+         Product Id : <c:out value="${product.id}" /><br>
+         Product Name : <c:out value="${product.name }"/>
+   <c:url var="action" value="addtocart/${product.id}"></c:url>
+   <form:form action="${action}" commandName="cart">
+   <input type="submit" class="btn btn-primary" value="Add To Cart" />
+   </form:form>
 							</div>
-							</div>
-							</div>
-							
+							</div>	
 							</c:forEach>
- 	       
- <%@include file="Footer.jsp"%>
+							
+    <c:choose>
+		<c:when test="${clickedshowproduct}">
+			<c:import url="/WEB-INF/views/IndividualProduct.jsp"></c:import>
+		</c:when>
+	</c:choose>
+	 <c:choose>
+		<c:when test="${UserClickedCart}">
+			<c:import url="/WEB-INF/views/Cart1.jsp"></c:import>
+		</c:when>
+	</c:choose>
+							
+        <%@include file="Footer.jsp"%>
 
 </body>
 </html>
-
-
-
-
-
-
-
-

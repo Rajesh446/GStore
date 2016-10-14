@@ -16,6 +16,7 @@ footer {
     
     margin-top: 50px;
     
+    
 } 
 body {
 width:100%;
@@ -191,17 +192,18 @@ width:100%;
 			style="overflow: auto; height: 400px; width: 70%">
 			<form>
 				<input data-ng-model="search" type="text"
-					placeholder=" Search Supplier" style="width: 20%">
+					placeholder=" Search Product" style="width: 20%">
 			</form>
-    
+    <br>
+    <div class="container">
  <div align="center">
 <table style="width:80%" class="table table-hover" >
 <thead style="background-color:rgb(128,128,128)">
 <tr>
 <th>Product ID</th>
 <th>Product Name</th>
-<th>Category Name</th>
-<th>Supplier Name</th>
+<th>Category ID</th>
+<th>Supplier ID</th>
 <th>Price</th>
 <th>Stock</th>
 <th>Image</th>
@@ -234,6 +236,7 @@ width:100%;
 </tbody>
 </table>
 </div>	
+</div>
 </div>
  </form:form><%-- 
  <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>

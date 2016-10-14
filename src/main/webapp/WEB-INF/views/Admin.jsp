@@ -80,7 +80,6 @@ width:100%;
 <c:import url="/WEB-INF/views/Supplier.jsp"/>
 </c:when>
 </c:choose>
-
 <c:choose>
 <c:when test="${userclickedcategory}">
 <c:import url="/WEB-INF/views/Category.jsp"/>
