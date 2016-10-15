@@ -80,7 +80,6 @@ margin-top:50px;
 <th> Name</th>
 <th>Price</th>
 <th>Quantity</th>
-<th>Edit</th>
 <th>Delete</th>
 </tr>
 </table>	
@@ -106,8 +105,12 @@ margin-top:50px;
 										<div class="col-xs-2" style="padding-top: 22px">
 											<label class="form-control input-sm">${cart.price}</label>
 										</div>
+										
+										<div class="col-xs-2" style="padding-top: 22px">
+											<label class="form-control input-sm">${cart.quantity}</label>
+										</div>
 
-										<div class="col-xs-4" style="padding-top: 22px">
+										<%-- <div class="col-xs-4" style="padding-top: 22px">
 											<form action="edit/${cart.id}">
 												<div class="col-xs-6">
 													<input type="text" class="form-control input-sm"
@@ -118,7 +121,7 @@ margin-top:50px;
 														class="btn btn-default btn-sm btn-block">Edit cart</button>
 												</div>
 												</form>
-										</div>
+										</div> --%>
 										<div class="col-xs-2" style="padding-top: 22px">
 											<a href="delete/${cart.id}" class="form-control input-sm">Delete</a>
 										</div>
@@ -135,7 +138,15 @@ margin-top:50px;
 								<div class="col-xs-6">
 									<h4 class="text-right">Total : Rs ${CartPrice}</h4>
 								</div>
-								</c:if>
+								 <form action="placeorder">
+
+          <div class="col-xs-3">
+           <button type="submit" class="btn btn-success btn-block">
+            Checkout</button>
+          </div>
+
+         </form>
+        </c:if>
 								</div>
 								</div>
 								

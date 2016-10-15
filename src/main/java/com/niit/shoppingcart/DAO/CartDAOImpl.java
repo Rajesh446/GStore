@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,15 +125,16 @@ import com.niit.shoppingcart.model.Cart;
 				return listproduct.get(0);
 			}
 		}
-		/*@Transactional
+		
+		@Transactional
 		public void pay(int userId) {
 			String hql="update Cart set status='P' where userid="+userId;	
 			@SuppressWarnings("rawtypes")
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			query.executeUpdate();
 		}
-		*/
-		/*
+		
+
 		@SuppressWarnings("deprecation")
 		@Transactional
 		public double CartPrice(int userId) {
@@ -139,7 +142,7 @@ import com.niit.shoppingcart.model.Cart;
 			c.add(Restrictions.eq("userid", userId));
 			c.add(Restrictions.eq("status","C"));
 			c.setProjection(Projections.sum("price"));
-			Double l= (Double)c.uniqueResult();
+			double l= (Double)c.uniqueResult();
 			return l;
 		}
 		@SuppressWarnings("deprecation")
@@ -149,8 +152,8 @@ import com.niit.shoppingcart.model.Cart;
 			c.add(Restrictions.eq("userid", userId));
 			c.add(Restrictions.eq("status","C"));
 			c.setProjection(Projections.count("userid"));
-			long count=(long) c.uniqueResult();
+			long count=(Long) c.uniqueResult();
 			return count;
 		}
-		
-*/	}
+
+		}

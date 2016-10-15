@@ -10,7 +10,25 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		function MyController($scope, $http) {
+			$scope.sortType = 'name'; // set the default sort type
+			$scope.sortReverse = false; // set the default sort order
+			$scope.search = '';
+			$scope.getDataFromServer = function() {
+				$http({
+					method : 'GET',
+					url : 'productgson'
+				}).success(function(data, status, headers, config) {
+					$scope.products = data;// alert(data); 
+				}).error(function(data, status, headers, config) {
+				});
+			};
+		};
+	</script>
 <style>
 footer {
     
@@ -33,51 +51,52 @@ width:100%;
   <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
   </h1>
   
-  </div>
+  </div> 
   
-   <nav class="navbar navbar-inverse">
-   <div class="container-fluid"> 
-   <div class="navbar-header" class=" pull-left">
-     <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid"> 
+  <div class="navbar-header" class=" pull-left">
+     <a class="navbar-brand" style="font-size:15px;"><span class="glyphicon glyphicon-user"></span> WELCOME ADMIN </a>
     </div>
-  
-  <!--  <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div> -->
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	   <li class="active"><a href="HOME">HOME</a></li>
-    	   <li><a href="Product">PRODUCT</a></li>
-          <li><a href="Category">CATEGORY</a></li>
-		   <li><a href="Supplier">SUPPLIER</a></li>
-      </ul>
-</div>
+      
+      <li><a href="Admin">HOME</a></li>
+      <li><a href="REGISTER">REGISTER</a></li>
+     <!--  <li><a href="LOGIN">LOGIN</a></li> -->
+	  <li><a href="ABOUTUS">ABOUT US</a></li>
+	  <li><a href="CONTACTUS">CONTACT US</a></li>  
+	  <li><a href="perform_logout">LOGOUT</a></li>
+	  </ul>
+   </div>
   </nav>
-<script
-		src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
-	<script>
-		var app = angular.module('myApp', []);
-		function MyController($scope, $http) {
-			$scope.sortType = 'name'; // set the default sort type
-			$scope.sortReverse = false; // set the default sort order
-			$scope.search = '';
-			$scope.getDataFromServer = function() {
-				$http({
-					method : 'GET',
-					url : 'productgson'
-				}).success(function(data, status, headers, config) {
-					$scope.products = data;// alert(data); 
-				}).error(function(data, status, headers, config) {
-				});
-			};
-		};
-	</script>
+  
+ 
+ 
+			<%-- <c:choose>
+					<c:when test="${LoggedIn}">
+
+						<br><li style="float: right"><a href="perform_logout"
+							class="w3-hover-none">Logout<i class="fa fa-sign-out"></i></a></li>
+						<c:choose>	
+						<c:when test="${!Administrator}">	
+						<br><li style="float: right"><a href="viewcart"
+							class="w3-hover-none">ViewCart<i class="fa fa-shopping-cart"></i>(${cartsize})</a></li>
+						</c:when>
+						</c:choose>
+
+						<br><li style="float: right"><a href="#" class="w3-hover-none">Hi,${name}
+						<i	class="fa fa-user"></i> </a></li>
+					</c:when>
+
+		 <c:otherwise>
+						<br><li style="float: right"><a href="Register"
+							class="w3-hover-none">SignUp<i class="fa fa-user-plus"></i></a></li>
+						<br><li style="float: right"><a href="login"
+							class="w3-hover-none">Login<i class="fa fa-sign-in"></i></a></li>
+					</c:otherwise>
+				</c:choose> --%>
+ 
+ 
  
   <c:url var="addAction" value="addProduct" ></c:url>
 
@@ -92,17 +111,24 @@ width:100%;
 	            </c:if>
          </h3>
           <div class="container">
-  <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <ul class="nav nav-pills nav-justified">
+   <li class="active"><a href="Product">Product</a></li>
+    <li><a href="Category">Category</a></li>
+     <li><a href="Supplier">Supplier</a></li>
+  </ul>
+</div>
+
+          
+ <!--  <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
   <ul class="nav nav-tabs col-lg-12">
     <li class="active"><a href="Product">Product</a></li>
     <li><a href="Category">Category</a></li>
      <li><a href="Supplier">Supplier</a></li>
   </ul>
-  </div> 
+  </div> --> 
   <br>
  <div class="clearfix"></div>
-	<div class="Product_Content tab-content">
-            <div id="Product" class="tab-pane active">
             <form class="form-horizontal">
  
   <br>
@@ -183,9 +209,7 @@ width:100%;
     
     </form>
     </div>
-    </div>
-    </div>
-    <br>
+      <br>
     
     <div class="container" data-ng-app="myApp"
 			data-ng-controller="MyController" data-ng-init="getDataFromServer()"

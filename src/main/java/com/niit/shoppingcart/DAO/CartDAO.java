@@ -13,6 +13,8 @@ public interface CartDAO {
 	public boolean delete(Cart cart);	
 	public Cart get(int id);	
 	public Cart getproduct(int id);	
-	/*public double getprice(int id);
-	public int getsize(int id);*/
+	public long cartsize(int userId);
+	public double CartPrice(int userId);
+	public void pay(int userId);
+	
 }

@@ -27,7 +27,9 @@ footer {
 body {
 width:100%;
 }
-  
+  .center-pills{ 
+  display: inline-block; 
+  }
 
   </style>
 
@@ -45,31 +47,42 @@ width:100%;
   
   </div>
   
-   <nav class="navbar navbar-inverse">
-   <div class="container-fluid"> 
-   <div class="navbar-header" class=" pull-left">
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid"> 
+  <div class="navbar-header" class=" pull-left">
      <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
     </div>
-  
-  <!--  <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div> -->
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
-      	   <li class="active"><a href="HOME">HOME</a></li>
-    	   <li><a href="Product">PRODUCT</a></li>
-          <li><a href="Category">CATEGORY</a></li>
-		   <li><a href="Supplier">SUPPLIER</a></li>
-      </ul>
-</div>
+      
+      <li><a href="Admin">HOME</a></li>
+      <li><a href="REGISTER">REGISTER</a></li>
+      <!-- <li><a href="LOGIN">LOGIN</a></li> -->
+	  <li><a href="ABOUTUS">ABOUT US</a></li>
+	  <li><a href="CONTACTUS">CONTACT US</a></li>
+	  <li><a href="perform_logout">LOGOUT</a></li>
+    </ul>
+   </div>
   </nav>
+ <!--  <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+  <ul class="nav nav-tabs col-lg-12">
+    <li class="active"><a href="Product">Product</a></li>
+    <li><a href="Category">Category</a></li>
+     <li><a href="Supplier">Supplier</a></li>
+  </ul>
+  </div> --> 
+  
+  
+  <div class="container">
+          <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <ul class="nav nav-pills nav-justified">
+     <li><a href="Product">Product</a></li>
+     <li><a href="Category">Category</a></li>
+     <li><a href="Supplier">Supplier</a></li>
+  </ul>
+</div>
+</div>
 
+<br>
 <c:choose>
 <c:when test="${userclickedproduct}">
 <c:import url="/WEB-INF/views/Product.jsp"/>

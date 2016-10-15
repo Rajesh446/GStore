@@ -13,6 +13,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		function MyController($scope, $http) {
+			$scope.sortType = 'name'; // set the default sort type
+			$scope.sortReverse = false; // set the default sort order
+			$scope.search = '';
+			$scope.getDataFromServer = function() {
+				$http({
+					method : 'GET',
+					url : 'suppliergson'
+				}).success(function(data, status, headers, config) {
+					$scope.suppliers = data;// alert(data); 
+				}).error(function(data, status, headers, config) {
+				});
+			};
+		};
+	</script>
 
 
 <style>
@@ -38,51 +57,23 @@ body {
 
 	</div>
 
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header" class=" pull-left">
-				<a class="navbar-brand" style="font-size: 15px;" href="#"><span
-					class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
-			</div>
-
-			<!--  <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div> -->
-			<ul class="nav navbar-nav navbar-right" style="margin-bottom: 0px;">
-				<li class="active"><a href="HOME">HOME</a></li>
-				<li><a href="Product">PRODUCT</a></li>
-				<li><a href="Category">CATEGORY</a></li>
-				<li><a href="Supplier">SUPPLIER</a></li>
-			</ul>
-		</div>
-	</nav>
-	<script
-		src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
-	<script>
-		var app = angular.module('myApp', []);
-		function MyController($scope, $http) {
-			$scope.sortType = 'name'; // set the default sort type
-			$scope.sortReverse = false; // set the default sort order
-			$scope.search = '';
-			$scope.getDataFromServer = function() {
-				$http({
-					method : 'GET',
-					url : 'suppliergson'
-				}).success(function(data, status, headers, config) {
-					$scope.suppliers = data;// alert(data); 
-				}).error(function(data, status, headers, config) {
-				});
-			};
-		};
-	</script>
-
+	 <nav class="navbar navbar-inverse">
+  <div class="container-fluid"> 
+  <div class="navbar-header" class=" pull-left">
+     <a class="navbar-brand" style="font-size:15px;"><span class="glyphicon glyphicon-user"></span> WELCOME ADMIN </a>
+    </div>
+     <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
+      
+      <li><a href="Admin">HOME</a></li>
+      <li><a href="REGISTER">REGISTER</a></li>
+    <!--   <li><a href="LOGIN">LOGIN</a></li> -->
+	  <li><a href="ABOUTUS">ABOUT US</a></li>
+	  <li><a href="CONTACTUS">CONTACT US</a></li>
+	  <li><a href="perform_logout">LOGOUT</a></li>
+    </ul>
+   </div>
+  </nav>
+  	
 
 	<c:url var="addAction" value="addSupplier"></c:url>
 
@@ -96,20 +87,17 @@ body {
 				<%--  <form:hidden path="id"/> --%>
 			</c:if>
 		</h3>
-		<div class="container">
-			<div
-				class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<ul class="nav nav-tabs col-lg-12">
-					<li><a href="Product">Product</a></li>
-					<li><a href="Category">Category</a></li>
-					<li class="active"><a href="Supplier">Supplier</a></li>
-				</ul>
-			</div>
+		       <div class="container">
+          <div class="col-xs-8 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <ul class="nav nav-pills nav-justified">
+         <li><a href="Product">Product</a></li>
+         <li><a href="Category">Category</a></li>
+         <li class="active"><a href="Supplier">Supplier</a></li>
+    </ul>
+    </div>
 			<br>
 			<div class="clearfix"></div>
-			<div class="Product_Content tab-content">
-				<div id="supplier" class="tab-pane active">
-					<form class="form-horizontal">
+				<form class="form-horizontal">
 
 						<br>
 						<div
@@ -154,9 +142,7 @@ body {
 						</div>
 					</form>
 				</div>
-			</div>
-		</div>
-		<br>
+			<br>
 		<div class="container" data-ng-app="myApp"
 			data-ng-controller="MyController" data-ng-init="getDataFromServer()"
 			style="overflow: auto; height: 400px; width: 70%">

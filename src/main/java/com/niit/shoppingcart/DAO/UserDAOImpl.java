@@ -16,9 +16,6 @@ import com.niit.shoppingcart.model.User;
 public class UserDAOImpl implements UserDAO {
 	
 	@Autowired 
-	private  User user;
-
-	@Autowired 
 	private SessionFactory sessionFactory;
 	
 	public UserDAOImpl(SessionFactory sessionFactory)
@@ -28,6 +25,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Transactional
 	public boolean saveOrUpdate(User user) {
+		user.setEnabled(true);
+		   user.setRole("ROLE_USER");
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 		return true;
 	
