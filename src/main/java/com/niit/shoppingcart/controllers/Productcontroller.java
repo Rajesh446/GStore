@@ -75,10 +75,10 @@ public class Productcontroller {
 		
 	            productDAO.saveOrUpdate(product);
 	    		System.out.println("Data Inserted");
-	            //String path = request.getSession().getServletContext().getRealPath("/resources/images/" + user.getUserid() + ".jpg");
+	            //String path = request.getSession().getServletContext().getRealPath("/resources//" + user.getUserid() + ".jpg");
 	    		MultipartFile image = product.getImage();
 	            //Path path;
-	            String path = request.getSession().getServletContext().getRealPath("/resources/images/Product/"+product.getId()+".jpg");
+	            String path = request.getSession().getServletContext().getRealPath("/resources/images/product/"+product.getId()+".jpg");
 	            System.out.println("Path="+path);
 	            System.out.println("File name = " + product.getImage().getOriginalFilename());
 	          

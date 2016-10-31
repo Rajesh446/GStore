@@ -27,7 +27,7 @@ import com.niit.shoppingcart.model.Cart;
 		private SessionFactory sessionFactory;
 		
 		public CartDAOImpl(SessionFactory sessionFactory) {
-			log.info("cart session===========================================================================================");
+			log.info("cart session");
 			this.sessionFactory=sessionFactory;
 		}
 		

@@ -38,8 +38,10 @@ width:100%;
 
 
  <div class="text-center" >
-  <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
-    <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
+  <h1 style="font-family:Georgia; font-size:40px;"><i>GStore</i>
+    <!-- <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" > -->
+  
+   <img  src="https://egybikers.com/images/dealershowroom/facebook%20profile%20pic.jpg" alt="logo" width="60px" height="60px" align="left"" >
   <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
   <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png" alt="twitter" width="30px" height="30px" align="right" >
   <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
@@ -50,7 +52,7 @@ width:100%;
   <nav class="navbar navbar-inverse">
   <div class="container-fluid"> 
   <div class="navbar-header" class=" pull-left">
-     <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ${msg} </a>
+     <a class="navbar-brand" style="font-size:15px;" href="#"><span class="glyphicon glyphicon-user"></span> WELCOME ADMIN </a>
     </div>
      <ul class="nav navbar-nav navbar-right" style="margin-bottom:0px;">
       
@@ -117,21 +119,21 @@ width:100%;
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item">
-        <img  src="http://static1.shop.indiatimes.com/imgbn/PhoneswithDeals.jpg" alt="mobile" >
+        <img  src="http://www.gannetdesign.com/wp-content/uploads/cropped-G-titel-1.jpg" alt="bike" >
       </div>
     
 
 	<div class="item active">
-        <img  src="http://2.bp.blogspot.com/-BDvmGGhmPVE/VDkDCz8wFZI/AAAAAAAAAT0/k21MsFYTCHE/s1600/Deals-on-Laptop.png" alt="mobile">
+        <img  src="http://laidlawantiqueautorestoration.com/wp-content/uploads/2015/05/1914-Lozier-Model84-Meadowbrook07-1600x400.jpg" alt="car">
       </div>
 
      
       <div class="item">
-        <img  src="http://www.cukti.com/image/product_image/7466d49c-4665-4ad3-93f2-83c4d58f016a.jpg" alt="mobile" >
+        <img  src="http://behemoth.gameovercycles.pl/eng/wp-content/uploads/2013/05/slajd1.jpg" alt="tool" >
       </div>
 
       <div class="item">
-        <img src="http://blogs-images.forbes.com/geoffreymorrison/files/2016/05/Acer-Switch-V-10-Opener.jpg" alt="mobile">
+        <img src="https://gaudinporschelv.com/images/dealer_images/486/custom/Porsche-Bikes/a30522d6e92f101c4925de735307c94a.jpg" alt="cycle">
       </div>
     </div>
 

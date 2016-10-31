@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,10 +42,10 @@ public class Cartcontroller {
  }
  int q;
  
- @RequestMapping(value="addtocart/{id}")
+ @RequestMapping(value={"addtocart/{id}","navproduct/addtocart/{id}"})
  public String addTOCart(@ModelAttribute("cart")Cart cart,BindingResult result,@PathVariable("id") int productid){
  
-  log.info("Cart operation start================================================================================================================");
+  log.info("Cart operation start");
   double p;
   if(cartDAO.getproduct(productid)==null){
    Cart cart2= new Cart(); 
@@ -72,16 +73,53 @@ public class Cartcontroller {
 cartDAO.update(cart1);
 System.out.println("opeartion over");
 
-log.info("cart operaiton over================================================================");
+log.info("cart operaiton over");
 return "redirect:/Cart1";
   } 
   
  }
+ 
+ 
+ @RequestMapping(value="update/{id}")
+	public String update(@ModelAttribute("cart") Cart cart){
+		cartDAO.update(cart);
+		return "redirect:/Cart1";
+	}
  @RequestMapping(value="delete/{id}")
  public String delete(@ModelAttribute("cart") Cart cart){
   cartDAO.delete(cart);
   return "redirect:/Cart1";
  }
+ 
+ @RequestMapping("editorder/{id}")
+	public String editorder(@PathVariable("id") int id, @RequestParam("quantity") int q, HttpSession session) {
+		Cart cart = cartDAO.get(id);
+		Product p = productDAO.get(cart.getProductid());
+		cart.setQuantity(q);
+		cart.setPrice(q * p.getPrice());
+		cartDAO.save(cart);
+		session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userId")));
+		return "redirect:/Cart1";
+	}
+ 
+ /*
+ @RequestMapping("Cart1")
+	public String viewCart(Model model, HttpSession session) {
+		int userId = (Integer) session.getAttribute("userId");
+		model.addAttribute("CartList", cartDAO.get(userId));
+		if (cartDAO.cartsize((Integer) session.getAttribute("userId")) != 0) {
+			model.addAttribute("CartPrice", cartDAO.CartPrice(userId));
+		} else {
+			model.addAttribute("EmptyCart", "true");
+		}
+		model.addAttribute("IfViewCartClicked", "true");
+		model.addAttribute("HideOthers", "true");
+		return "Cart1";
+	}
+ 
+ */
+ 
+
  @RequestMapping(value="/Cart1")
  public ModelAndView cartpage(@ModelAttribute("cart") Cart cart,HttpSession session){
   ModelAndView mv= new ModelAndView("Cart1");

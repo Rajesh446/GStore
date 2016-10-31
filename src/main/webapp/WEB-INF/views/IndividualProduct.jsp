@@ -35,7 +35,7 @@ width:100%;
 <div class="horizontal">
 <div class="thumbnail">
 <img height="300px" width="300px" alt="${product.id }"
-				src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>">
+				src="<c:url value="/resources/images/product/${product.id }.jpg"></c:url>">
 		</div>
 		</div>
 		<div align="right">
@@ -52,7 +52,7 @@ width:100%;
 		<h2><c:out value="${product.name }"/></h2>
 			<div class="col-xs-6 w3-animate-left">
 				<div class="img">
-					<img  height="300px" width="300px" alt="${product.id}" src="<c:url value="/resources/images/Product/${product.id}.jpg"></c:url>">
+					<img  height="300px" width="300px" alt="${product.id}" src="<c:url value="/resources/images/product/${product.id}.jpg"></c:url>">
 					<div class="desc">
 					<%-- 	<strong>${product.name}</strong> --%>
 						

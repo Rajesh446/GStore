@@ -44,8 +44,9 @@ width:100%;
 </head>
 <body style="background-color:#CCCCCC;">
  <div class="text-center" >
-  <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
-    <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
+  <h1 style="font-family:Georgia; font-size:40px;"><i>GStore</i>
+    <!-- <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" > -->
+     <img  src="https://egybikers.com/images/dealershowroom/facebook%20profile%20pic.jpg" alt="logo" width="60px" height="60px" align="left"" >
   <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
   <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png" alt="twitter" width="30px" height="30px" align="right" >
   <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
@@ -246,7 +247,7 @@ width:100%;
 <td>{{product.supplier_id}}</td>
 <td>{{product.price}}</td>
 <td>{{product.stock}}</td>
- <td><div class="thumbnail"><img height="50px" width="50px" alt="{{product.id }}" src="<c:url value="/resources/images/Product/{{product.id }}.jpg"></c:url>">
+ <td><div class="thumbnail"><img height="50px" width="50px" alt="{{product.id }}" src="<c:url value="/resources/images/product/{{product.id }}.jpg"></c:url>">
 </div> 
 <td><a href="ProductDeleteById/{{product.id}}"> <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-remove"></span>Delete</button></a>
 <td><a href="ProductEditById/{{product.id}}">  <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-pencil"></span>Edit</button></a>
@@ -262,11 +263,8 @@ width:100%;
 </div>	
 </div>
 </div>
- </form:form><%-- 
- <script src="${pageContext.request.contextPath}/app-resources/js/lib/jquery-2.2.3.min.js"></script>
-  <script src="${pageContext.request.contextPath}/app-resources/js/myapp.js"></script>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/app-resources/css/style.css"/> 
-     --%><%@include file="Footer.jsp"%> 
+ </form:form>
+ <%@include file="Footer.jsp"%> 
   </body>
   </html>
   

@@ -14,10 +14,11 @@ padding-top:0px;
 }
 </style>
 
-<body style="background-color:#CCCCCC;">
+<body style="background-color:;">
 <div class="text-center" >
-  <h1 style="font-family:Georgia; font-size:40px;"><i>SHOPIN </i>
-    <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" >
+  <h1 style="font-family:Georgia; font-size:40px;"><i>GStore </i>
+    <!-- <img  src="https://www.sitewelder.com/art2012/logo-big-shopping.png" alt="logo" width="60px" height="60px" align="left" > -->
+ <img  src="https://egybikers.com/images/dealershowroom/facebook%20profile%20pic.jpg" alt="logo" width="60px" height="60px" align="left"" >
   <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/768px-F_icon.svg.png" alt="fb" width="30px" height="30px" align="right" >
   <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png" alt="twitter" width="30px" height="30px" align="right" >
   <img  src="http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png" alt="linkedin" width="30px" height="30px" align="right" >
@@ -48,9 +49,9 @@ padding-top:0px;
 	  <li><a href="ABOUTUS">ABOUT US</a></li>
 	  <li><a href="CONTACTUS">CONTACT US</a></li>
    <sec:authorize access="isAuthenticated()">
-   <li ><a href="Cart" ><p>CART <span class="glyphicon glyphicon-shopping-cart"></span></p></a></li>
+   <li ><a href="Cart1" ><p>CART <span class="glyphicon glyphicon-shopping-cart"></span></p></a></li>
 	<li><a href="<c:url value="/perform_logout" />"><p>LOGOUT<span class="glyphicon glyphicon-log-out"></span></p></a></li>
-	<li><a href="">WELCOME<sec:authentication property="principal.username"/></a></li>
+	<li><a href="">WELCOME <t><sec:authentication property="principal.username"/></a></li>
 </sec:authorize>
 					  
    </ul>

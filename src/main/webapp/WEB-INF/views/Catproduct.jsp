@@ -38,7 +38,7 @@ width:100%;
      <div class="col-xs-3" class="thumbnail">
  	 			 
 	<a href="ShowProduct/${product.id}" > <img height="200px" width="200px" alt="${product.id }"
-	src="<c:url value="/resources/images/Product/${product.id }.jpg"></c:url>"></a>
+	src="<c:url value="/resources/images/product/${product.id }.jpg"></c:url>"></a>
   <div class="desc">
          Product Id : <c:out value="${product.id}" /><br>
          Product Name : <c:out value="${product.name }"/>

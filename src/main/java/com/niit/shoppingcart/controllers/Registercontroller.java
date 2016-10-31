@@ -47,7 +47,7 @@ public class Registercontroller {
 		mv.addAttribute("allProduct", productDAO.list());
 		mv.addAttribute("UserClickedregister", "true");
 		mv.addAttribute("HideOthers","true");
-		return "REGISTER";
+		return "HOME";
 	}
 
 	@RequestMapping(value = "adduser", method = RequestMethod.POST)

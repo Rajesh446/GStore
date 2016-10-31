@@ -17,26 +17,28 @@ http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
 <security:http auto-config="true" use-expressions="true">
+
+
+    <security:intercept-url pattern="/Admin/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/product/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addproduct/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/productById/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/deleteProductById/**"   access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/category/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addcategory/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/categoryById/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/deleteCategoryById/**"   access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/supplier/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addsupplier/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/supplierById/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/deleteSupplierById/**"   access="hasRole('ROLE_ADMIN')" />
         
-       <security:intercept-url pattern="/Product/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/addProduct/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/ProductEditById/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/ProductDeleteById/**"   access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/Category/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/addCategory/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/CategoryEditById/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/CategoryDeleteById/**"   access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/Supplier/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/addSupplier/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/SupplierEditById/**"  access="hasRole('ROLE_ADMIN')" />
-    <security:intercept-url pattern="/SupplierDeleteById/**"   access="hasRole('ROLE_ADMIN')" />
-        
-    <security:intercept-url pattern="/addtocart/**"   access="hasRole('ROLE_USER')" />
-    <security:intercept-url pattern="/viewcart/**"   access="hasRole('ROLE_USER')" />
+    <security:intercept-url pattern="/addtoCart/**"   access="hasRole('ROLE_USER')" />
+    <security:intercept-url pattern="/Cart1/**"   access="hasRole('ROLE_USER')" />
     
     
     <security:intercept-url pattern="/editorder/**"  access="hasRole('ROLE_USER')" />
-		<security:intercept-url pattern="/delete/**" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/deleteitem/**" access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/Pay/**"  access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/placeorder/**" access="hasRole('ROLE_USER')" />
     
@@ -52,10 +54,10 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     	
     <security:csrf disabled="true" />
     
-   <!--  <security:session-management>
+    <security:session-management>
     <security:concurrency-control max-sessions="1"/>
     </security:session-management>
-     -->
+    
 </security:http>	
 
 	<security:authentication-manager>
